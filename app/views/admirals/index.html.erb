@@ -1,6 +1,6 @@
-<h1>Admirals</h1>
+<p><i><a href="/ships">List of Ships in His Majesty's Navy</a></i></p>
+<h1>Flag Officers of His Majesty's Royal Navy</h1>
 
 <% @admirals.each do |admiral| %>
-  <p><%= admiral.rank %></p>
-  <p><%= admiral.name %></p><br>
-<% end %>  
+  <h3><%= admiral.name %> - <%= admiral.created_at %></h3>
+<% end %>
