@@ -12,11 +12,10 @@ RSpec.describe 'the ships show page' do
         admiral = Admiral.create!(name: "Thomas Hardy", age: 39, rank: "Vice-Admiral of the White", killed_in_action: false)
         ship = admiral.ships.create!(ship_name: "H.M.S. Surprise", guns: 38, number_of_deck: 1, sunk: false)
         visit "/ships/#{ship.id}"
-        save_and_open_page
-        expect(page).to have_content("H.M.S. Surprise")
-        expect(page).to have_content(38)
-        expect(page).to have_content(1)
-        expect(page).to have_content(false)
+        expect(page).to have_content(ship.ship_name)
+        expect(page).to have_content(ship.guns)
+        expect(page).to have_content(ship.number_of_deck)
+        expect(page).to have_content(ship.sunk)
       end
     end
   end

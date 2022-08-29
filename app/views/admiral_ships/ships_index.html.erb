@@ -1,5 +1,9 @@
-<p><i><a href="/admirals">Admiralty list of His Majesty's Navy</a></i></p>
+<p><i><a href="/admirals">Admiralty List of His Majesty's Navy</a></i></p>
 <p><i><a href="/ships">List of Ships in His Majesty's Navy</a></i></p>
+
+<h1>Ships of Admiral <%= @admiral.name %>'s Squadron</h1>
+
+<p><b><%= link_to "Add ship to Admiral #{@admiral.name}'s Squadron", "/admirals/#{@admiral.id}/ships/new" %></b></p>
 
 <% @ships.each do |ship| %>
   <h2><%= ship.ship_name %></h2>
@@ -10,4 +14,4 @@
   <p><b>Admiral id: </b><%= ship.admiral_id %></p>
   <p><b>Created at: </b><%= ship.created_at %></p>
   <p><b>Updated at: </b><%= ship.updated_at %></p>
-<% end %>  
+<% end %>

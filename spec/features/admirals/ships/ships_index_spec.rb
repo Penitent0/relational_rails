@@ -15,21 +15,17 @@ RSpec.describe 'the admirals ships index page' do
         admiral2 = Admiral.create!(name: "Horatio Nelson", age: 47, rank: "Vice-Admiral of the Red", killed_in_action: true)
         ship3 = admiral2.ships.create!(ship_name: "H.M.S. Victory", guns: 104, number_of_deck: 3, sunk: false)
         ship4 = admiral2.ships.create!(ship_name: "H.M.S. Ajax", guns: 74, number_of_deck: 2, sunk: false)
-
         visit "/admirals/#{admiral1.id}/ships"
-        save_and_open_page
-        expect(page).to have_content("H.M.S. Surprise")
-        expect(page).to have_content("H.M.S. Pollux")
-        expect(page).to_not have_content("H.M.S. Victory")
-        expect(page).to_not have_content("H.M.S. Ajax")
+        expect(page).to have_content(ship1.ship_name)
+        expect(page).to have_content(ship2.ship_name)
+        expect(page).to_not have_content(ship3.ship_name)
+        expect(page).to_not have_content(ship4.ship_name)
         expect(ship1.ship_name).to appear_before(ship2.ship_name)
-      
         visit "/admirals/#{admiral2.id}/ships"
-        save_and_open_page
-        expect(page).to have_content("H.M.S. Victory")
-        expect(page).to have_content("H.M.S. Ajax")
-        expect(page).to_not have_content("H.M.S. Surprise")
-        expect(page).to_not have_content("H.M.S. Pollux")
+        expect(page).to have_content(ship3.ship_name)
+        expect(page).to have_content(ship4.ship_name)
+        expect(page).to_not have_content(ship1.ship_name)
+        expect(page).to_not have_content(ship2.ship_name)
         expect(ship3.ship_name).to appear_before(ship4.ship_name)
       end
     end

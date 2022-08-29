@@ -8,8 +8,28 @@ class AdmiralsController < ApplicationController
     @admiral = Admiral.find(params[:id])
   end
 
-  # def ships_index
-  #   # @ships = Ship.all.select { |ship| ship.admiral_id == Admiral.find(params[:id]).id }
-  #   @ships = Admiral.find(params[:id]).ships
-  # end
+  def new
+
+  end
+
+  def create
+    admiral = Admiral.create(admirals_params)
+    redirect_to '/admirals'
+  end
+
+  def edit
+    @admiral = Admiral.find(params[:id])
+  end
+
+  def update
+    admiral = Admiral.find(params[:id])
+    admiral.update(admirals_params)
+    admiral.save
+    redirect_to "/admirals/#{admiral.id}"
+  end
+
+private
+  def admirals_params
+    params.permit(:name, :age, :rank, :killed_in_action)
+  end
 end

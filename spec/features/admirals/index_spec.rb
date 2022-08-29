@@ -15,9 +15,8 @@ RSpec.describe 'the admirals index page' do
           admiral1 = Admiral.create!(name: "Thomas Hardy", age: 39, rank: "Vice-Admiral of the White", killed_in_action: false)
           admiral2 = Admiral.create!(name: "Horatio Nelson", age: 49, rank: "Vice-Admiral of the Red", killed_in_action: true)
           visit "/admirals"
-          save_and_open_page
-          expect(page).to have_content("Thomas Hardy")
-          expect(page).to have_content("Horatio Nelson")
+          expect(page).to have_content(admiral1.name)
+          expect(page).to have_content(admiral2.name)
         end
       end
     end
@@ -61,16 +60,16 @@ RSpec.describe 'the admirals index page' do
         ship2 = admiral.ships.create!(ship_name: "H.M.S. Pollux", guns: 74, number_of_deck: 2, sunk: true)
         visit "/admirals/#{admiral.id}"
         expect(page.has_link?).to eq(true)
-        expect(page).to have_link("Admiratly List of His Majesty's Navy")
+        expect(page).to have_link("Admiralty List of His Majesty's Navy")
         visit "/ships"
         expect(page.has_link?).to eq(true)
-        expect(page).to have_link("Admiratly List of His Majesty's Navy")
+        expect(page).to have_link("Admiralty List of His Majesty's Navy")
         visit "/ships/#{ship1.id}"
         expect(page.has_link?).to eq(true)
-        expect(page).to have_link("Admiratly List of His Majesty's Navy")
+        expect(page).to have_link("Admiralty List of His Majesty's Navy")
         visit "/admirals/#{admiral.id}/ships"
         expect(page.has_link?).to eq(true)
-        expect(page).to have_link("Admiratly List of His Majesty's Navy")
+        expect(page).to have_link("Admiralty List of His Majesty's Navy")
       end
     end
   end

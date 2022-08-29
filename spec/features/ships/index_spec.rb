@@ -13,8 +13,6 @@ RSpec.describe 'the ship index page' do
         ship1 = admiral.ships.create!(ship_name: "H.M.S. Surprise", guns: 38, number_of_deck: 1, sunk: false)
         ship2 = admiral.ships.create!(ship_name: "H.M.S. Pollux", guns: 74, number_of_deck: 2, sunk: true)
         visit "/ships"
-        save_and_open_page
-
         expect(page).to have_content("H.M.S. Surprise")
         expect(page).to have_content(38)
         expect(page).to have_content(1)
@@ -23,7 +21,6 @@ RSpec.describe 'the ship index page' do
         expect(page).to have_content(74)
         expect(page).to have_content(2)
         expect(page).to have_content(true)
-
         expect(ship1.ship_name).to appear_before(ship2.ship_name)
       end
     end
