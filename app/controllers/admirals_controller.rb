@@ -4,12 +4,10 @@ class AdmiralsController < ApplicationController
   end
 
   def show
-    @number_of_ships = Admiral.find(params[:id]).ships.count
     @admiral = Admiral.find(params[:id])
   end
 
   def new
-
   end
 
   def create

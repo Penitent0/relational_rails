@@ -3,5 +3,6 @@
 <p><h4><a href="/admirals/new">New Admiral</a><h4></p>
 
 <% @admirals.each do |admiral| %>
-  <h3><%= admiral.name %> - <%= admiral.created_at %></h3>
+  <h3><%= admiral.name %> - <%= admiral.created_at %><h3>
+  <h4><%= link_to "Update Admiral #{admiral.name}", "/admirals/#{admiral.id}/edit" %><h4>
 <% end %>

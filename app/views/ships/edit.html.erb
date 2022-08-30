@@ -1,0 +1,13 @@
+<h2>Update <%= @ship.ship_name %></h2>
+
+<%= form_with url: "/ships/#{@ship.id}", method: :patch, local: true do |form| %>
+  <div><b><%= form.label :ship_name, "Ship Name" %></b>
+  <%= form.text_field :ship_name, value: @ship.ship_name %></div><br>
+  <div><b><%= form.label :guns, "Number of Guns" %></b>
+  <%= form.text_field :guns, value: @ship.guns %></div><br>
+  <div><b><%= form.label :number_of_deck, "Number of Decks" %></b>
+  <%= form.text_field :number_of_deck, value: @ship.number_of_deck %></div><br>
+  <div><b><%= form.label :sunk, "Sunk?" %></b>
+  <%= form.text_field :sunk, value: @ship.sunk %></div><br>
+  <%= form.submit "Update Ship" %>
+<% end %>

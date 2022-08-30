@@ -2,11 +2,11 @@
 
 <%= form_with url: "/admirals/#{@admiral.id}", method: :patch, local: true do |form| %>
   <div><b><%= form.label :Name %></b>
-  <%= form.text_field :name, value: @admiral.name %></div><br>
+  <%= form.text_field :name, placeholder: @admiral.name %></div><br>
   <div><b><%= form.label :Age %></b>
-  <%= form.text_field :age, value: @admiral.age %></div><br>
+  <%= form.text_field :age, placeholder: @admiral.age %></div><br>
   <div><b><%= form.label :Rank %></b>
-  <%= form.text_field :rank, size: "25", value: @admiral.rank %></div><br>
+  <%= form.text_field :rank, size: "25", placeholder: @admiral.rank %></div><br>
   <div><b><%= form.label :killed_in_action, "Killed in Action?" %></b>
   <%= form.text_field :killed_in_action, value: @admiral.killed_in_action %></div><br>
   <%= form.submit "Update Admiral" %>

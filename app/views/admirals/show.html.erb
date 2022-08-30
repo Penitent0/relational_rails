@@ -8,5 +8,5 @@
 <p><b>Killed in Action?: </b><%= @admiral.killed_in_action %></p>
 <p><b>Created at: </b><%= @admiral.created_at %></p>
 <p><b>Updated at: </b><%= @admiral.updated_at %></p>
-<p><b><%= link_to "Ships in Squadron:", "/admirals/#{@admiral.id}/ships" %></b> <%= @number_of_ships %></p><br>
+<p><b><%= link_to "Ships in Squadron:", "/admirals/#{@admiral.id}/ships" %></b> <%= @admiral.number_of_ships %></p><br>
 <p><%= link_to "Update Admiral #{@admiral.name}", "/admirals/#{@admiral.id}/edit" %></p>

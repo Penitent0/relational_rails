@@ -1,7 +1,7 @@
 <p><i><a href="/admirals">Admiralty List of His Majesty's Navy</a></i></p>
 <h1>Ships of His Majesty's Royal Navy</h1>
 
-<% @ships.each do |ship| %>
+<% @ships.select do |ship|%>
   <h2><%= ship.ship_name %></h2>
   <p><b>Ship id: </b><%= ship.id %></p>
   <p><b>Admiral id: </b><%= ship.admiral_id %></p>
@@ -10,4 +10,5 @@
   <p><b>Sunk?: </b><%= ship.sunk %></p>
   <p><b>Created at: </b><%= ship.created_at %></p>
   <p><b>Updated at: </b><%= ship.updated_at %></p>
+  <h4><%= link_to "Update #{ship.ship_name}", "/ships/#{ship.id}/edit" %><h4>
 <% end %>  

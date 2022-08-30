@@ -8,4 +8,6 @@
 <p><b>Sunk?: </b><%= @ship.sunk %></p>
 <p><b>Admiral id: </b><%= @ship.admiral_id %></p>
 <p><b>Created at: </b><%= @ship.created_at %></p>
-<p><b>Updated at: </b><%= @ship.updated_at %></p>
+<p><b>Updated at: </b><%= @ship.updated_at %></p><br>
+
+<p><%= link_to "Update #{@ship.ship_name}", "/ships/#{@ship.id}/edit" %></p>

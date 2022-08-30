@@ -1,0 +1,13 @@
+<h2>Create New Ship</h2>
+
+<%= form_with url: "/admirals/#{@admiral.id}/ships", method: :post, local: true do |form| %>
+  <div><b><%= form.label :ship_name, "Ship Name" %></b>
+  <%= form.text_field :ship_name %></div><br>
+  <div><b><%= form.label :guns, "Number of Guns" %></b>
+  <%= form.text_field :guns %></div><br>
+  <div><b><%= form.label :number_of_deck, "Number of Decks" %></b>
+  <%= form.text_field :number_of_deck %></div><br>
+  <div><b><%= form.label :sunk, "Sunk?" %></b>
+  <%= form.text_field :sunk %></div><br>
+  <%= form.submit "Create Ship" %>
+<% end %>

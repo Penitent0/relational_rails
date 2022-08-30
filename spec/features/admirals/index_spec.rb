@@ -14,7 +14,9 @@ RSpec.describe 'the admirals index page' do
         it 'Then I see the name of each parent record in the system' do
           admiral1 = Admiral.create!(name: "Thomas Hardy", age: 39, rank: "Vice-Admiral of the White", killed_in_action: false)
           admiral2 = Admiral.create!(name: "Horatio Nelson", age: 49, rank: "Vice-Admiral of the Red", killed_in_action: true)
+
           visit "/admirals"
+
           expect(page).to have_content(admiral1.name)
           expect(page).to have_content(admiral2.name)
         end
@@ -33,14 +35,18 @@ RSpec.describe 'the admirals index page' do
       it 'I see that records are ordered by most recently created first' do
         admiral1 = Admiral.create!(name: "Thomas Hardy", age: 39, rank: "Vice-Admiral of the White", killed_in_action: false)
         admiral2 = Admiral.create!(name: "Horatio Nelson", age: 49, rank: "Vice-Admiral of the Red", killed_in_action: true)
+
         visit "/admirals"
+
         expect(admiral2.name).to appear_before(admiral1.name)
       end
 
       it 'And next to each of the records I see when it was created' do 
         admiral1 = Admiral.create!(name: "Thomas Hardy", age: 39, rank: "Vice-Admiral of the White", killed_in_action: false)
         admiral2 = Admiral.create!(name: "Horatio Nelson", age: 49, rank: "Vice-Admiral of the Red", killed_in_action: true)
+
         visit "/admirals"
+
         expect(page).to have_content(admiral1.created_at)
         expect(page).to have_content(admiral2.created_at)
       end
@@ -58,19 +64,45 @@ RSpec.describe 'the admirals index page' do
         admiral = Admiral.create!(name: "Thomas Hardy", age: 39, rank: "Vice-Admiral of the White", killed_in_action: false)
         ship1 = admiral.ships.create!(ship_name: "H.M.S. Surprise", guns: 38, number_of_deck: 1, sunk: false)
         ship2 = admiral.ships.create!(ship_name: "H.M.S. Pollux", guns: 74, number_of_deck: 2, sunk: true)
+
         visit "/admirals/#{admiral.id}"
+
         expect(page.has_link?).to eq(true)
         expect(page).to have_link("Admiralty List of His Majesty's Navy")
+
         visit "/ships"
         expect(page.has_link?).to eq(true)
         expect(page).to have_link("Admiralty List of His Majesty's Navy")
+
         visit "/ships/#{ship1.id}"
+
         expect(page.has_link?).to eq(true)
         expect(page).to have_link("Admiralty List of His Majesty's Navy")
+
         visit "/admirals/#{admiral.id}/ships"
+
         expect(page.has_link?).to eq(true)
         expect(page).to have_link("Admiralty List of His Majesty's Navy")
       end
+    end
+  end
+
+  # User Story 17, Parent Update From Parent Index Page 
+  # As a visitor
+  # When I visit the parent index page
+  # Next to every parent, I see a link to edit that parent's info
+  # When I click the link
+  # I should be taken to that parent's edit page where I can update its information
+
+  describe 'When I visit the parent index page' do
+    it 'Next to every parent, I see a link to edit that parents info' do
+      admiral1 = Admiral.create!(name: "Thomas Hardy", age: 39, rank: "Vice-Admiral of the White", killed_in_action: false)
+      admiral2 = Admiral.create!(name: "Horatio Nelson", age: 49, rank: "Vice-Admiral of the Red", killed_in_action: true)
+
+      visit "/admirals"
+
+      expect(find_link("Update Admiral #{admiral1.name}")[:href].should == "/admirals/#{admiral1.id}/edit")
+      expect(find_link("Update Admiral #{admiral2.name}")[:href].should == "/admirals/#{admiral2.id}/edit")
     end
   end
 end
