@@ -53,12 +53,10 @@ RSpec.describe 'the admirals ships index page' do
       visit "/admirals/#{admiral.id}/ships"
 
       expect(find_link('Sort Squadron Alphabetically')[:href].should == "/admirals/#{admiral.id}/ships")
-
-
     end
 
     it 'when I click it I go back and see the chidren sorted alphabetically' do
-
+      
     end
   end
 

@@ -1,5 +1,5 @@
 class Admiral < ApplicationRecord
-  has_many :ships
+  has_many :ships, :dependent => :destroy
 
   def number_of_ships
     self.ships.count

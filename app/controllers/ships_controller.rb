@@ -28,6 +28,12 @@ class ShipsController < ApplicationController
     redirect_to "/admirals/#{admiral.id}/ships"
   end
 
+  def destroy
+    ship = Ship.find(params[:id])
+    ship.destroy
+    redirect_to '/ships'
+  end
+
 private
   def ships_params
     params.permit(:ship_name, :guns, :number_of_deck, :sunk)

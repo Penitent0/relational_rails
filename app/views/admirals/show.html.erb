@@ -10,3 +10,4 @@
 <p><b>Updated at: </b><%= @admiral.updated_at %></p>
 <p><b><%= link_to "Ships in Squadron:", "/admirals/#{@admiral.id}/ships" %></b> <%= @admiral.number_of_ships %></p><br>
 <p><%= link_to "Update Admiral #{@admiral.name}", "/admirals/#{@admiral.id}/edit" %></p>
+<p><%= link_to "Retire Admiral #{@admiral.name}", "/admirals/#{@admiral.id}", method: :delete %></p>

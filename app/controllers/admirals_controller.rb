@@ -26,6 +26,12 @@ class AdmiralsController < ApplicationController
     redirect_to "/admirals/#{admiral.id}"
   end
 
+  def destroy
+    admiral = Admiral.find(params[:id])
+    admiral.destroy
+    redirect_to '/admirals'
+  end
+
 private
   def admirals_params
     params.permit(:name, :age, :rank, :killed_in_action)

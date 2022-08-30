@@ -7,7 +7,9 @@
 
 <p><b><%= link_to "Sort Squadron Alphabetically", "/admirals/#{@admiral.id}/ships" %></b></p>
 
-<% @ships.each do |ship| %>
+# @admiral.ships_alphabetized
+
+<% @admiral.ships.each do |ship| %>
   <h2><%= ship.ship_name %></h2>
   <p><b>Ship id: </b><%= ship.id %></p>
   <p><b>Number of Guns: </b><%= ship.guns %></p>

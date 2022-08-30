@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   get '/admirals', to: 'admirals#index'
 
+  delete '/admirals/:id', to: 'admirals#destroy'
+
+  delete '/ships/:id', to: 'ships#destroy'
+
   get '/admirals/:id/ships/new', to: 'ships#new'
 
   post '/admirals/:id/ships', to: 'ships#create'
