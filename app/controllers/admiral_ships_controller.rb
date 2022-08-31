@@ -1,5 +1,10 @@
 class AdmiralShipsController < ApplicationController
   def ships_index
-    @admiral = Admiral.find(params[:id])
+    if params[:status] == "activated"
+      binding.pry
+      @admiral = Admiral.find(params[:id]).ships_alphabetized
+    else
+      @admiral = Admiral.find(params[:id])
+    end 
   end
 end

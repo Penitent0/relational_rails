@@ -21,4 +21,12 @@ RSpec.describe Admiral, type: :model do
     expect(admiral.ships).to eq([ship1, ship2, ship3, ship4])
     expect(admiral.ships_alphabetized).to eq([ship3, ship1, ship2, ship4])
   end
+
+  it 'has order by name method' do
+    admiral1 = Admiral.create!(name: "Thomas Hardy", age: 65, rank: "Rear-Admiral", killed_in_action: false)
+    admiral2 = Admiral.create!(name: "Horatio Nelson", age: 39, rank: "Vice-Admiral of the White", killed_in_action: true)
+    admiral3 = Admiral.create!(name: "Cuthbert Collingwood", age: 39, rank: "Vice-Admiral of the White", killed_in_action: false)
+
+    expect(Admiral.sort_by_created_at).to eq([admiral3, admiral2, admiral1])
+  end
 end

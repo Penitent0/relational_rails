@@ -8,4 +8,8 @@ class Admiral < ApplicationRecord
   def ships_alphabetized
     self.ships.order('ships.ship_name ASC')
   end
+
+  def self.sort_by_created_at
+    self.order(created_at: :desc)
+  end
 end

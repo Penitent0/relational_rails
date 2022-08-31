@@ -5,7 +5,7 @@
 
 <p><b><%= link_to "Add ship to Admiral #{@admiral.name}'s Squadron", "/admirals/#{@admiral.id}/ships/new" %></b></p>
 
-<p><b><%= link_to "Sort Squadron Alphabetically", "/admirals/#{@admiral.id}/ships" %></b></p>
+<p><b><%= link_to "Sort Squadron Alphabetically", "/admirals/#{@admiral.id}/ships?status=activated" %></b></p>
 
 # @admiral.ships_alphabetized
 

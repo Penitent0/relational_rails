@@ -44,7 +44,7 @@ RSpec.describe 'the admirals ships index page' do
   # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
 
   describe 'I visit the parent child index page' do
-    it 'I see a link to sort the children alphabetically' do
+    xit 'I see a link to sort the children alphabetically' do
       admiral = Admiral.create!(name: "Thomas Hardy", age: 39, rank: "Vice-Admiral of the White", killed_in_action: false)
       ship1 = admiral.ships.create!(ship_name: "H.M.S. Ajax", guns: 74, number_of_deck: 2, sunk: false)
       ship2 = admiral.ships.create!(ship_name: "H.M.S. Pollux", guns: 74, number_of_deck: 2, sunk: true)

@@ -1,6 +1,6 @@
 class AdmiralsController < ApplicationController
   def index
-    @admirals = Admiral.order('admirals.created_at DESC')
+    @admirals = Admiral.sort_by_created_at
   end
 
   def show
